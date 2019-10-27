@@ -17,7 +17,7 @@ class MainViewController: UIViewController {
     private var thoughtCollectionRef: CollectionReference!
     private var thoughtsListener: ListenerRegistration!
     private var selectedCategory = ThoughtCategory.funny.rawValue
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -37,7 +37,7 @@ class MainViewController: UIViewController {
         super.viewDidDisappear(animated)
         thoughtsListener.remove()
     }
-
+    
     @IBAction func categoryChanged(_ sender: Any) {
         switch segmentControl.selectedSegmentIndex {
         case 0:
@@ -54,32 +54,35 @@ class MainViewController: UIViewController {
     }
     
     func setListener(){
-        thoughtsListener = thoughtCollectionRef
-            .whereField(CATEGORY, isEqualTo: selectedCategory)
-            .order(by: TIMESTAMP,descending: true)
-            .addSnapshotListener { (snapshot, error) in
-            if let error = error {
-                debugPrint("error fetching data: \(error)")
-            } else {
-                self.thoughts.removeAll()
-                guard let snapshot = snapshot else { return }
-                for document in snapshot.documents {
-                    let data = document.data()
-                    let username = data[USERNAME] as? String ?? "Anonymous"
-                    let timestamp = data[TIMESTAMP] as? Date ?? Date()
-                    let numLikes = data[NUMLIKES] as? Int ?? 0
-                    let numComments = data[NUMCOMMENTS] as? Int ?? 0
-                    let thoughtTxt = data[THOUGHTTXT] as? String ?? "blabla"
-                    let documentId = document.documentID
-                
-                    let thought = Thought(userName: username, timestamp: timestamp, toughtTxt: thoughtTxt, numLikes: numLikes, numComments: numComments, documentId: documentId)
-                    self.thoughts.append(thought)
-                }
-                self.tableView.reloadData()
+        if selectedCategory == ThoughtCategory.popular.rawValue {
+            thoughtsListener = thoughtCollectionRef
+                .order(by: NUMLIKES,descending: true)
+                .addSnapshotListener { (snapshot, error) in
+                    if let error = error {
+                        debugPrint("error fetching data: \(error)")
+                    } else {
+                        self.thoughts.removeAll()
+                        self.thoughts = Thought.parseData(snapshot: snapshot)
+                        self.tableView.reloadData()
+                    }
+            }
+        } else {
+            thoughtsListener = thoughtCollectionRef
+                .whereField(CATEGORY, isEqualTo: selectedCategory)
+                .order(by: TIMESTAMP,descending: true)
+                .addSnapshotListener { (snapshot, error) in
+                    if let error = error {
+                        debugPrint("error fetching data: \(error)")
+                    } else {
+                        self.thoughts.removeAll()
+                        self.thoughts = Thought.parseData(snapshot: snapshot)
+                        self.tableView.reloadData()
+                    }
             }
         }
     }
 }
+
 
 extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
