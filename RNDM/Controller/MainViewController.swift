@@ -15,7 +15,9 @@ class MainViewController: UIViewController {
     
     private var thoughts = [Thought]()
     private var thoughtCollectionRef: CollectionReference!
-    
+    private var thoughtsListener: ListenerRegistration!
+    private var selectedCategory = ThoughtCategory.funny.rawValue
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -28,10 +30,38 @@ class MainViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        thoughtCollectionRef.getDocuments { (snapshot, error) in
+        setListener()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        thoughtsListener.remove()
+    }
+
+    @IBAction func categoryChanged(_ sender: Any) {
+        switch segmentControl.selectedSegmentIndex {
+        case 0:
+            selectedCategory = ThoughtCategory.funny.rawValue
+        case 1:
+            selectedCategory = ThoughtCategory.serious.rawValue
+        case 2:
+            selectedCategory = ThoughtCategory.crazy.rawValue
+        default:
+            selectedCategory = ThoughtCategory.popular.rawValue
+        }
+        thoughtsListener.remove()
+        setListener()
+    }
+    
+    func setListener(){
+        thoughtsListener = thoughtCollectionRef
+            .whereField(CATEGORY, isEqualTo: selectedCategory)
+            .order(by: TIMESTAMP,descending: true)
+            .addSnapshotListener { (snapshot, error) in
             if let error = error {
                 debugPrint("error fetching data: \(error)")
             } else {
+                self.thoughts.removeAll()
                 guard let snapshot = snapshot else { return }
                 for document in snapshot.documents {
                     let data = document.data()
@@ -41,7 +71,7 @@ class MainViewController: UIViewController {
                     let numComments = data[NUMCOMMENTS] as? Int ?? 0
                     let thoughtTxt = data[THOUGHTTXT] as? String ?? "blabla"
                     let documentId = document.documentID
-                    
+                
                     let thought = Thought(userName: username, timestamp: timestamp, toughtTxt: thoughtTxt, numLikes: numLikes, numComments: numComments, documentId: documentId)
                     self.thoughts.append(thought)
                 }
@@ -49,7 +79,6 @@ class MainViewController: UIViewController {
             }
         }
     }
-    
 }
 
 extension MainViewController: UITableViewDataSource, UITableViewDelegate {

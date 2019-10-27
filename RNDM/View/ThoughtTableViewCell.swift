@@ -23,9 +23,12 @@ class ThoughtTableViewCell: UITableViewCell {
     func configureCell(thougt : Thought) {
         guard let time = thougt.timestamp  else { return }
         guard let numLikes = thougt.numLikes  else { return }
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM d, hh:mm"
 
         usernameLbl.text = thougt.userName
-        dateLbl.text = String(describing: time)
+        dateLbl.text = formatter.string(from: time)
         thoughtsLbl.text = thougt.toughtTxt
         likesNumberLbl.text = String(describing: numLikes)
     }
