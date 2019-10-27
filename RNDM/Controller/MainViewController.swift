@@ -1,5 +1,5 @@
 //
-//  MainVC.swift
+//  MainViewController.swift
 //  RNDM
 //
 //  Created by Molnár Csaba on 2019. 10. 27..
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainVC: UIViewController {
+class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

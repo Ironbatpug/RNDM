@@ -9,12 +9,14 @@
 /* Begin PBXBuildFile section */
 		754DB6AC2365B0C600C087F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754DB6AB2365B0C600C087F1 /* AppDelegate.swift */; };
 		754DB6AE2365B0C600C087F1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754DB6AD2365B0C600C087F1 /* SceneDelegate.swift */; };
-		754DB6B02365B0C600C087F1 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754DB6AF2365B0C600C087F1 /* MainVC.swift */; };
+		754DB6B02365B0C600C087F1 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754DB6AF2365B0C600C087F1 /* MainViewController.swift */; };
 		754DB6B32365B0C600C087F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 754DB6B12365B0C600C087F1 /* Main.storyboard */; };
 		754DB6B52365B0C900C087F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 754DB6B42365B0C900C087F1 /* Assets.xcassets */; };
 		754DB6B82365B0C900C087F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 754DB6B62365B0C900C087F1 /* LaunchScreen.storyboard */; };
 		754DB6C02365B4D000C087F1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 754DB6BF2365B4D000C087F1 /* GoogleService-Info.plist */; };
 		754DB6C32365C2E000C087F1 /* AddThoughtViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754DB6C22365C2E000C087F1 /* AddThoughtViewController.swift */; };
+		754DB6C62365CB1700C087F1 /* ThoughtCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754DB6C52365CB1700C087F1 /* ThoughtCategory.swift */; };
+		754DB6C92365D13100C087F1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754DB6C82365D13100C087F1 /* Constants.swift */; };
 		9828A8871DD9591BE4FCCC41 /* Pods_RNDM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBA1815621169A361FD560DC /* Pods_RNDM.framework */; };
 /* End PBXBuildFile section */
 
@@ -24,13 +26,15 @@
 		754DB6A82365B0C600C087F1 /* RNDM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RNDM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		754DB6AB2365B0C600C087F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		754DB6AD2365B0C600C087F1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		754DB6AF2365B0C600C087F1 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		754DB6AF2365B0C600C087F1 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		754DB6B22365B0C600C087F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		754DB6B42365B0C900C087F1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		754DB6B72365B0C900C087F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		754DB6B92365B0C900C087F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		754DB6BF2365B4D000C087F1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		754DB6C22365C2E000C087F1 /* AddThoughtViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddThoughtViewController.swift; sourceTree = "<group>"; };
+		754DB6C52365CB1700C087F1 /* ThoughtCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtCategory.swift; sourceTree = "<group>"; };
+		754DB6C82365D13100C087F1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DBA1815621169A361FD560DC /* Pods_RNDM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RNDM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -84,6 +88,8 @@
 		754DB6AA2365B0C600C087F1 /* RNDM */ = {
 			isa = PBXGroup;
 			children = (
+				754DB6C72365D11C00C087F1 /* Utility */,
+				754DB6C42365CB0500C087F1 /* Enums */,
 				754DB6C12365C25A00C087F1 /* Controller */,
 				754DB6AB2365B0C600C087F1 /* AppDelegate.swift */,
 				754DB6AD2365B0C600C087F1 /* SceneDelegate.swift */,
@@ -99,10 +105,26 @@
 		754DB6C12365C25A00C087F1 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				754DB6AF2365B0C600C087F1 /* MainVC.swift */,
+				754DB6AF2365B0C600C087F1 /* MainViewController.swift */,
 				754DB6C22365C2E000C087F1 /* AddThoughtViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		754DB6C42365CB0500C087F1 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				754DB6C52365CB1700C087F1 /* ThoughtCategory.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		754DB6C72365D11C00C087F1 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				754DB6C82365D13100C087F1 /* Constants.swift */,
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,9 +253,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				754DB6C32365C2E000C087F1 /* AddThoughtViewController.swift in Sources */,
-				754DB6B02365B0C600C087F1 /* MainVC.swift in Sources */,
+				754DB6B02365B0C600C087F1 /* MainViewController.swift in Sources */,
+				754DB6C62365CB1700C087F1 /* ThoughtCategory.swift in Sources */,
 				754DB6AC2365B0C600C087F1 /* AppDelegate.swift in Sources */,
 				754DB6AE2365B0C600C087F1 /* SceneDelegate.swift in Sources */,
+				754DB6C92365D13100C087F1 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
