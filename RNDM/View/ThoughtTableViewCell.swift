@@ -21,10 +21,13 @@ class ThoughtTableViewCell: UITableViewCell {
     }
 
     func configureCell(thougt : Thought) {
+        guard let time = thougt.timestamp  else { return }
+        guard let numLikes = thougt.numLikes  else { return }
+
         usernameLbl.text = thougt.userName
-        dateLbl.text = "\(thougt.timestamp)"
+        dateLbl.text = String(describing: time)
         thoughtsLbl.text = thougt.toughtTxt
-        likesNumberLbl.text = "\(thougt.numLikes)"
+        likesNumberLbl.text = String(describing: numLikes)
     }
 
 }
