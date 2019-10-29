@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7545159C2368E4360037A385 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7545159B2368E4360037A385 /* CommentTableViewCell.swift */; };
+		7545159E2368E6210037A385 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7545159D2368E6210037A385 /* Comment.swift */; };
 		754DB6AC2365B0C600C087F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754DB6AB2365B0C600C087F1 /* AppDelegate.swift */; };
 		754DB6AE2365B0C600C087F1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754DB6AD2365B0C600C087F1 /* SceneDelegate.swift */; };
 		754DB6B02365B0C600C087F1 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754DB6AF2365B0C600C087F1 /* MainViewController.swift */; };
@@ -20,6 +22,7 @@
 		754DB6CC2365DAD600C087F1 /* Thought.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754DB6CB2365DAD600C087F1 /* Thought.swift */; };
 		754DB6CF2365DC1100C087F1 /* ThoughtTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754DB6CE2365DC1100C087F1 /* ThoughtTableViewCell.swift */; };
 		757C7E8E2366084A0081ABED /* CreateUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757C7E8D2366084A0081ABED /* CreateUserViewController.swift */; };
+		757C7E902368DCD70081ABED /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757C7E8F2368DCD70081ABED /* CommentsViewController.swift */; };
 		75FFB9AD236605670001B951 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FFB9AC236605670001B951 /* LoginViewController.swift */; };
 		9828A8871DD9591BE4FCCC41 /* Pods_RNDM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBA1815621169A361FD560DC /* Pods_RNDM.framework */; };
 /* End PBXBuildFile section */
@@ -27,6 +30,8 @@
 /* Begin PBXFileReference section */
 		24DF1464ABABEE55D65B7162 /* Pods-RNDM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNDM.release.xcconfig"; path = "Pods/Target Support Files/Pods-RNDM/Pods-RNDM.release.xcconfig"; sourceTree = "<group>"; };
 		7023341E78F30CCED4E4A252 /* Pods-RNDM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNDM.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RNDM/Pods-RNDM.debug.xcconfig"; sourceTree = "<group>"; };
+		7545159B2368E4360037A385 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
+		7545159D2368E6210037A385 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		754DB6A82365B0C600C087F1 /* RNDM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RNDM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		754DB6AB2365B0C600C087F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		754DB6AD2365B0C600C087F1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -42,6 +47,7 @@
 		754DB6CB2365DAD600C087F1 /* Thought.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thought.swift; sourceTree = "<group>"; };
 		754DB6CE2365DC1100C087F1 /* ThoughtTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtTableViewCell.swift; sourceTree = "<group>"; };
 		757C7E8D2366084A0081ABED /* CreateUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserViewController.swift; sourceTree = "<group>"; };
+		757C7E8F2368DCD70081ABED /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
 		75FFB9AC236605670001B951 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		DBA1815621169A361FD560DC /* Pods_RNDM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RNDM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -119,6 +125,7 @@
 				754DB6C22365C2E000C087F1 /* AddThoughtViewController.swift */,
 				75FFB9AC236605670001B951 /* LoginViewController.swift */,
 				757C7E8D2366084A0081ABED /* CreateUserViewController.swift */,
+				757C7E8F2368DCD70081ABED /* CommentsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -143,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				754DB6CB2365DAD600C087F1 /* Thought.swift */,
+				7545159D2368E6210037A385 /* Comment.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -151,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				754DB6CE2365DC1100C087F1 /* ThoughtTableViewCell.swift */,
+				7545159B2368E4360037A385 /* CommentTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -233,6 +242,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-RNDM/Pods-RNDM-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
@@ -243,6 +253,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
@@ -282,10 +293,13 @@
 			files = (
 				75FFB9AD236605670001B951 /* LoginViewController.swift in Sources */,
 				757C7E8E2366084A0081ABED /* CreateUserViewController.swift in Sources */,
+				757C7E902368DCD70081ABED /* CommentsViewController.swift in Sources */,
 				754DB6C32365C2E000C087F1 /* AddThoughtViewController.swift in Sources */,
 				754DB6B02365B0C600C087F1 /* MainViewController.swift in Sources */,
 				754DB6C62365CB1700C087F1 /* ThoughtCategory.swift in Sources */,
 				754DB6CF2365DC1100C087F1 /* ThoughtTableViewCell.swift in Sources */,
+				7545159C2368E4360037A385 /* CommentTableViewCell.swift in Sources */,
+				7545159E2368E6210037A385 /* Comment.swift in Sources */,
 				754DB6AC2365B0C600C087F1 /* AppDelegate.swift in Sources */,
 				754DB6AE2365B0C600C087F1 /* SceneDelegate.swift in Sources */,
 				754DB6CC2365DAD600C087F1 /* Thought.swift in Sources */,

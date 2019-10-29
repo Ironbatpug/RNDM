@@ -17,6 +17,7 @@ class MainViewController: UIViewController {
     private var thoughtCollectionRef: CollectionReference!
     private var thoughtsListener: ListenerRegistration!
     private var selectedCategory = ThoughtCategory.funny.rawValue
+    private var handle: AuthStateDidChangeListenerHandle?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,12 +31,23 @@ class MainViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setListener()
+        handle = Auth.auth().addStateDidChangeListener({ (auth, user) in
+            if user == nil {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
+                loginVC.modalPresentationStyle = .fullScreen
+                self.present(loginVC, animated: true, completion: nil)
+            } else {
+                self.setListener()
+            }
+        })
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        thoughtsListener.remove()
+        if thoughtsListener != nil {
+            thoughtsListener.remove()
+        }
     }
     
     @IBAction func categoryChanged(_ sender: Any) {
@@ -81,6 +93,25 @@ class MainViewController: UIViewController {
             }
         }
     }
+    
+    @IBAction func logoutBtnWasPressed(_ sender: Any) {
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+        } catch let signoutError as NSError  {
+            debugPrint("Error signout: \(signoutError)")
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toComments" {
+            if let destinationVC = segue.destination as? CommentsViewController {
+                if let thought = sender as? Thought {
+                    destinationVC.thought = thought
+                }
+            }
+        }
+    }
 }
 
 
@@ -100,5 +131,9 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         } else {
             return UITableViewCell()
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "toComments", sender: thoughts[indexPath.row])
     }
 }
