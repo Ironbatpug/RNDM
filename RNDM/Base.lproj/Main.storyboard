@@ -578,11 +578,65 @@
                         <outlet property="commentTxtField" destination="rv7-mh-p4b" id="PKn-cg-5b3"/>
                         <outlet property="keyboardView" destination="g1I-be-Uga" id="cKY-Jz-Dwo"/>
                         <outlet property="tableView" destination="OhY-dX-t1r" id="DqR-BR-TyY"/>
+                        <segue destination="maB-xL-vda" kind="show" identifier="toEditComment" id="TU2-Zu-eU3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sY0-Yg-Qom" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2189.8550724637685" y="427.98913043478262"/>
+        </scene>
+        <!--Update Comment View Controller-->
+        <scene sceneID="Ctp-5S-Ehq">
+            <objects>
+                <viewController id="maB-xL-vda" customClass="UpdateCommentViewController" customModule="RNDM" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="33H-Hq-Afy">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="rTf-hz-KdZ">
+                                <rect key="frame" x="20" y="64" width="374" height="200"/>
+                                <color key="backgroundColor" white="0.67000000000000004" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="wbl-J8-2m2"/>
+                                </constraints>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xPr-gk-gTp">
+                                <rect key="frame" x="132" y="279" width="150" height="40"/>
+                                <color key="backgroundColor" red="0.96078431369999995" green="0.50980392159999999" blue="0.047058823530000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="bzj-aF-DaF"/>
+                                    <constraint firstAttribute="width" constant="150" id="wIS-RA-QSZ"/>
+                                </constraints>
+                                <state key="normal" title="Update">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="updateTapped:" destination="maB-xL-vda" eventType="touchUpInside" id="Ssz-wm-BhU"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="xPr-gk-gTp" firstAttribute="top" secondItem="rTf-hz-KdZ" secondAttribute="bottom" constant="15" id="ZWs-aY-BeC"/>
+                            <constraint firstItem="B3k-Dq-Lab" firstAttribute="trailing" secondItem="rTf-hz-KdZ" secondAttribute="trailing" constant="20" id="dag-HS-TeI"/>
+                            <constraint firstItem="rTf-hz-KdZ" firstAttribute="top" secondItem="B3k-Dq-Lab" secondAttribute="top" constant="20" id="hqY-Oo-H18"/>
+                            <constraint firstItem="xPr-gk-gTp" firstAttribute="centerX" secondItem="33H-Hq-Afy" secondAttribute="centerX" id="vNd-UH-1rh"/>
+                            <constraint firstItem="rTf-hz-KdZ" firstAttribute="leading" secondItem="B3k-Dq-Lab" secondAttribute="leading" constant="20" id="ytC-8s-8oW"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="B3k-Dq-Lab"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="m72-vj-NbN"/>
+                    <connections>
+                        <outlet property="commentTxt" destination="rTf-hz-KdZ" id="Z2L-uu-VuH"/>
+                        <outlet property="updateBtn" destination="xPr-gk-gTp" id="ljN-pg-a17"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TsH-AF-1aj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3147.826086956522" y="427.98913043478262"/>
         </scene>
     </scenes>
     <resources>

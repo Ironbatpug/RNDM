@@ -14,14 +14,14 @@ class CommentsViewController: UIViewController {
     @IBOutlet weak var commentTxtField: UITextField!
     @IBOutlet weak var keyboardView: UIView!
     @IBOutlet weak var tableView: UITableView!
-
+    
     var thought: Thought!
     private var comments = [Comment]()
     var thoughtRef: DocumentReference!
     let fireStore = Firestore.firestore()
     var userName: String!
     var commentsListener: ListenerRegistration!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
@@ -44,6 +44,14 @@ class CommentsViewController: UIViewController {
             self.comments = Comment.parseData(snapshot: snapshot)
             self.tableView.reloadData()
         })
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? UpdateCommentViewController {
+            if let commentData = sender as? (comment: Comment, thought: Thought) {
+                destination.commentData = commentData
+            }
+        }
     }
     
     @IBAction func addcommentPressed(_ sender: Any) {
@@ -123,16 +131,17 @@ extension CommentsViewController: CommentDelegate {
                 }
             }
             //deleting a single document, which do not need transactions
-//            self.fireStore.collection(THOUGHT_REF).document(self.thought.documentId).collection(COMMENTS_REF).document(comment.documentId).delete { (error) in
-//                if let error = error {
-//                    debugPrint("Unable to delete comment: \(error)")
-//                } else {
-//                    alert.dismiss(animated: true, completion: nil)
-//                }
-//            }
+            //            self.fireStore.collection(THOUGHT_REF).document(self.thought.documentId).collection(COMMENTS_REF).document(comment.documentId).delete { (error) in
+            //                if let error = error {
+            //                    debugPrint("Unable to delete comment: \(error)")
+            //                } else {
+            //                    alert.dismiss(animated: true, completion: nil)
+            //                }
+            //            }
         }
         let editAction = UIAlertAction(title: "Edit Comment", style: .default) { (action) in
-            
+            self.performSegue(withIdentifier: "toEditComment", sender: (comment, self.thought))
+            alert.dismiss(animated: true, completion: nil)
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
