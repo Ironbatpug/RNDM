@@ -13,29 +13,37 @@ class Comment {
     private(set) var userName: String!
     private(set) var timestamp: Date!
     private(set) var commentTxt: String!
+    private(set) var documentId: String!
 
-    init(userName: String, timestamp: Date, commentTxt: String) {
+    private(set) var userId: String!
+
+    
+    init(userName: String, timestamp: Date, commentTxt: String, documentId: String, userId: String) {
         self.userName = userName
         self.timestamp = timestamp
         self.commentTxt = commentTxt
+        self.documentId = documentId
+        self.userId = userId
     }
     
-//    class func parseData(snapshot: QuerySnapshot?) -> [Comment] {
-//        var thoughts = [Comment]()
-  //      guard let snapshot = snapshot else { return thoughts}
-    //    for document in snapshot.documents {
-      //      let data = document.data()
-        //    let username = data[USERNAME] as? String ?? "Anonymous"
-          //  let timestamp = data[TIMESTAMP] as? Date ?? Date()
-//            let numLikes = data[NUMLIKES] as? Int ?? 0
-  //          let numComments = data[NUMCOMMENTS] as? Int ?? 0
-    //        let thoughtTxt = data[THOUGHTTXT] as? String ?? "blabla"
-      //      let documentId = document.documentID
+    class func parseData(snapshot: QuerySnapshot?) -> [Comment] {
+        var comments = [Comment]()
+        guard let snapshot = snapshot else { return comments}
+        for document in snapshot.documents {
+            let data = document.data()
+            let username = data[USERNAME] as? String ?? "Anonymous"
+            print()
+            let postTimestamp = data["timestamp"] as? Timestamp ?? nil
+            let timestamp = Date(timeIntervalSince1970: Double(postTimestamp!.seconds/1))
+            let documentId = document.documentID
+            let commentTxt = data[COMMENT] as? String ?? "blabla"
             
-        //    let thought = Thought(userName: username, timestamp: timestamp, toughtTxt: thoughtTxt, numLikes: numLikes, numComments: numComments, documentId: documentId)
-          //  thoughts.append(thought)
-        //}
+            let userId = data[USERID] as? String ?? ""
+            
+            let comment = Comment(userName: username, timestamp: timestamp, commentTxt: commentTxt, documentId: documentId,userId: userId)
+            comments.append(comment)
+        }
         
-      //  return thoughts
-    //}
+        return comments
+    }
 }

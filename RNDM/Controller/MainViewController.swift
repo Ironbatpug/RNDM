@@ -126,7 +126,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "ThoughtTableViewCell", for: indexPath) as? ThoughtTableViewCell {
-            cell.configureCell(thougt: thoughts[indexPath.row])
+            cell.configureCell(thougt: thoughts[indexPath.row], delegeta: self)
             return cell
         } else {
             return UITableViewCell()
@@ -136,4 +136,12 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "toComments", sender: thoughts[indexPath.row])
     }
+}
+
+extension MainViewController: ThoughtDelegate {
+    func thoughtOptionsTapped(thought: Thought) {
+        print(thought.userId)
+    }
+    
+    
 }

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7545159C2368E4360037A385 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7545159B2368E4360037A385 /* CommentTableViewCell.swift */; };
 		7545159E2368E6210037A385 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7545159D2368E6210037A385 /* Comment.swift */; };
+		754515A0236D97FB0037A385 /* KeyboardBoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7545159F236D97FB0037A385 /* KeyboardBoundView.swift */; };
 		754DB6AC2365B0C600C087F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754DB6AB2365B0C600C087F1 /* AppDelegate.swift */; };
 		754DB6AE2365B0C600C087F1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754DB6AD2365B0C600C087F1 /* SceneDelegate.swift */; };
 		754DB6B02365B0C600C087F1 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754DB6AF2365B0C600C087F1 /* MainViewController.swift */; };
@@ -32,6 +33,7 @@
 		7023341E78F30CCED4E4A252 /* Pods-RNDM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNDM.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RNDM/Pods-RNDM.debug.xcconfig"; sourceTree = "<group>"; };
 		7545159B2368E4360037A385 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		7545159D2368E6210037A385 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		7545159F236D97FB0037A385 /* KeyboardBoundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardBoundView.swift; sourceTree = "<group>"; };
 		754DB6A82365B0C600C087F1 /* RNDM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RNDM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		754DB6AB2365B0C600C087F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		754DB6AD2365B0C600C087F1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 			children = (
 				754DB6CE2365DC1100C087F1 /* ThoughtTableViewCell.swift */,
 				7545159B2368E4360037A385 /* CommentTableViewCell.swift */,
+				7545159F236D97FB0037A385 /* KeyboardBoundView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 				7545159C2368E4360037A385 /* CommentTableViewCell.swift in Sources */,
 				7545159E2368E6210037A385 /* Comment.swift in Sources */,
 				754DB6AC2365B0C600C087F1 /* AppDelegate.swift in Sources */,
+				754515A0236D97FB0037A385 /* KeyboardBoundView.swift in Sources */,
 				754DB6AE2365B0C600C087F1 /* SceneDelegate.swift in Sources */,
 				754DB6CC2365DAD600C087F1 /* Thought.swift in Sources */,
 				754DB6C92365D13100C087F1 /* Constants.swift in Sources */,
@@ -456,7 +460,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Ironbatpug.RNDM;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -474,7 +478,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Ironbatpug.RNDM;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

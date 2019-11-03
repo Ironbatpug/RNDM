@@ -41,7 +41,7 @@ class AddThoughtViewController: UIViewController {
     }
     
     @IBAction func postBtnTapped(_ sender: Any) {
-        guard let username = userNameTxt.text else { return }
+        let username = Auth.auth().currentUser?.displayName
         guard let thoughtTxt = thoughtTxtA.text else { return }
         Firestore.firestore().collection(THOUGHT_REF).addDocument(data: [
             CATEGORY : selectedCategory,
@@ -49,7 +49,8 @@ class AddThoughtViewController: UIViewController {
             NUMLIKES : 0,
             THOUGHTTXT : thoughtTxt,
             TIMESTAMP : FieldValue.serverTimestamp(),
-            USERNAME : username
+            USERNAME : username,
+            USERID : Auth.auth().currentUser?.uid ?? ""
         ]) { (error) in
             if let error = error {
                 debugPrint("Error adding document_ \(error)")
