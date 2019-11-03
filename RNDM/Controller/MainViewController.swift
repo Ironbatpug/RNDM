@@ -140,8 +140,53 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension MainViewController: ThoughtDelegate {
     func thoughtOptionsTapped(thought: Thought) {
-        print(thought.userId)
+        let alert = UIAlertController(title: "Delete", message: "Do you wan to delete your thought?", preferredStyle: .actionSheet)
+        let deleteAction = UIAlertAction(title: "Delete Thought", style: .default) { (action) in
+            self.delete(collection: Firestore.firestore().collection(THOUGHT_REF).document(thought.documentId).collection(COMMENTS_REF), batchSize: 100) { (error) in
+                if let error = error {
+                    debugPrint("Could not delete thought \(error)")
+                } else {
+                    Firestore.firestore().collection(THOUGHT_REF).document(thought.documentId).delete { (error) in
+                        if let error = error {
+                            debugPrint("Could not delete thought \(error)")
+                        } else {
+                            alert.dismiss(animated: true, completion: nil)
+                        }
+                    }
+                }
+            }
+            
+            
+            
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(deleteAction)
+        alert.addAction(cancelAction)
+        present(alert, animated: true, completion: nil)
+        
     }
     
-    
+    func delete(collection: CollectionReference, batchSize: Int = 100, completion: @escaping (Error?) -> ()) {
+        collection.limit(to: batchSize).getDocuments { (docset, error) in
+            guard let docset = docset else {
+                completion(error)
+                return
+            }
+            
+            guard docset.count > 0 else {
+                completion(nil)
+                return
+            }
+            let batch = collection.firestore.batch()
+            docset.documents.forEach { batch.deleteDocument($0.reference)}
+            
+            batch.commit { (batchError) in
+                if let batchError = batchError {
+                    completion(batchError)
+                } else {
+                    self.delete(collection: collection, batchSize: batchSize, completion: completion)
+                }
+            }
+        }
+    }
 }
